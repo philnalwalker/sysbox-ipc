@@ -70,6 +70,7 @@ message RegisterReq {
     string netns = 4;
     repeated IDMapping uidMappings = 5;
     repeated IDMapping gidMappings = 6;
+    bool externalUserNS = 7;  // when true, use provided mappings; do not allocate from pool
 }
 
 message ContainerConfig {

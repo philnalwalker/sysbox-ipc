@@ -25,12 +25,13 @@ import (
 
 // Sysbox-mgr container registration info
 type RegistrationInfo struct {
-	Id          string
-	Rootfs      string
-	Userns      string
-	Netns       string
-	UidMappings []specs.LinuxIDMapping
-	GidMappings []specs.LinuxIDMapping
+	Id              string
+	Rootfs          string
+	Userns          string
+	Netns           string
+	UidMappings     []specs.LinuxIDMapping
+	GidMappings     []specs.LinuxIDMapping
+	ExternalUserNS  bool // when true, mappings are from K8s/Containerd; do not allocate from pool
 }
 
 // Sysbox-mgr container update info

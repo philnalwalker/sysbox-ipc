@@ -109,12 +109,13 @@ func (s *ServerStub) Register(ctx context.Context, req *pb.RegisterReq) (*pb.Reg
 	}
 
 	regInfo := &ipcLib.RegistrationInfo{
-		Id:          req.GetId(),
-		Rootfs:      req.GetRootfs(),
-		Userns:      req.GetUserns(),
-		Netns:       req.GetNetns(),
-		UidMappings: protoIDMapToLinuxIDMap(req.GetUidMappings()),
-		GidMappings: protoIDMapToLinuxIDMap(req.GetGidMappings()),
+		Id:             req.GetId(),
+		Rootfs:         req.GetRootfs(),
+		Userns:         req.GetUserns(),
+		Netns:          req.GetNetns(),
+		UidMappings:    protoIDMapToLinuxIDMap(req.GetUidMappings()),
+		GidMappings:    protoIDMapToLinuxIDMap(req.GetGidMappings()),
+		ExternalUserNS: req.GetExternalUserNS(),
 	}
 
 	config, err := s.cb.Register(regInfo)

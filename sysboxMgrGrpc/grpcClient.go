@@ -65,12 +65,13 @@ func Register(regInfo *ipcLib.RegistrationInfo) (*ipcLib.ContainerConfig, error)
 	defer cancel()
 
 	req := &pb.RegisterReq{
-		Id:          regInfo.Id,
-		Rootfs:      regInfo.Rootfs,
-		Userns:      regInfo.Userns,
-		Netns:       regInfo.Netns,
-		UidMappings: linuxIDMapToProtoIDMap(regInfo.UidMappings),
-		GidMappings: linuxIDMapToProtoIDMap(regInfo.GidMappings),
+		Id:             regInfo.Id,
+		Rootfs:         regInfo.Rootfs,
+		Userns:         regInfo.Userns,
+		Netns:          regInfo.Netns,
+		UidMappings:    linuxIDMapToProtoIDMap(regInfo.UidMappings),
+		GidMappings:    linuxIDMapToProtoIDMap(regInfo.GidMappings),
+		ExternalUserNS: regInfo.ExternalUserNS,
 	}
 
 	resp, err := ch.Register(ctx, req)
